@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Todos{% endblock %}
+
+{% block content %}
+    <h1>Your Todos</h1>
+    <form id="add-form">
+        <input type="text" id="todo-input" placeholder="New Todo" required>
+        <button type="submit">Add</button>
+    </form>
+    <ul id="todo-list">
+        {% for todo in todos %}
+            <li {% if todo.done %}class="done"{% endif %}>{{ todo.content }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}
